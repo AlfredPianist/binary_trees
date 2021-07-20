@@ -1,9 +1,9 @@
 #include "binary_trees.h"
 
 /**
- * binary_tree_size - Measures the depth of a binary tree.
+ * binary_tree_size - Counts the total number of nodes of a binary tree.
  *
- * @tree: The root of the tree to calculate its sizze.
+ * @tree: The root of the tree to calculate its size.
  *
  * Return: the tree's size, 0 if tree is NULL.
  */
