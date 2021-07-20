@@ -5,7 +5,7 @@ int binary_tree_balance(const binary_tree_t *tree);
 int binary_tree_is_full(const binary_tree_t *tree);
 
 /**
- * binary_tree_is_perfect - Checks if a binary tree is perfect or not (aka
+ * binary_tree_is_perfect - Checks if a binary tree is perfect or not (i.e.
  *                          each node has two nodes and its balance factor
  *                          is 0).
  *
