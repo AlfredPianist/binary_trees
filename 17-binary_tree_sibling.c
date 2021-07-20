@@ -3,7 +3,7 @@
 /**
  * binary_tree_sibling - Retrieves a node's sibling.
  *
- * @tree: The node of the tree to retrieve its sibling.
+ * @node: The node of the tree to retrieve its sibling.
  *
  * Return: pointer to sibling node, NULL otherwise or if parent is NULL.
  */
