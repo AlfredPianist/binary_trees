@@ -24,7 +24,7 @@ int binary_tree_is_perfect(const binary_tree_t *tree)
 }
 
 /**
- * binary_tree_is_full - Checks if a binary tree is full or not (aka
+ * binary_tree_is_full - Checks if a binary tree is full or not (i.e.
  *                       each node can't have only one child).
  *
  * @tree: The node of the tree to calculate its fullness.
