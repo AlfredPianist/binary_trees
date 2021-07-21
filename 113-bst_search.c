@@ -4,7 +4,7 @@
  * bst_search - Searches for a value on a Binary Search Tree.
  *
  * @tree: The BST to be searched upon.
- * @value: The value to be serched.
+ * @value: The value to be searched.
  *
  * Return: pointer to the node in BST that matches the value, NULL otherwise.
  */
