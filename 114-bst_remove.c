@@ -5,7 +5,7 @@ bst_t *bst_search(const bst_t *tree, int value);
 /**
  * bst_remove - Deletes a value on a Binary Search Tree.
  *
- * @tree: The BST to be searched upon.
+ * @root: The BST to be searched upon.
  * @value: The value to be deleted.
  *
  * Return: pointer to the new root node of BST.
