@@ -57,6 +57,9 @@ int binary_tree_is_full(const binary_tree_t *tree)
  */
 int binary_tree_balance(const binary_tree_t *tree)
 {
+	if (!tree)
+		return (0);
+
 	return (binary_tree_height_2(tree->left) -
 		binary_tree_height_2(tree->right));
 }
