@@ -63,31 +63,31 @@ avl_t *avl_insert(bst_t **tree, int value)
  */
 avl_t *avl_rebalance(avl_t *node, avl_t **tree)
 {
-	int balance;
+		int balance, balance_prev;
 	avl_t *parent = node->parent;
 
+	balance = balance_prev = 0;
 	while (parent)
 	{
+		balance_prev = balance;
 		balance = binary_tree_balance(parent);
 
-		/* Left left */
-		if (balance > 1 && parent->n < parent->left->n)
-			parent = (avl_t *) binary_tree_rotate_right((binary_tree_t *) parent);
-		/* Right right */
-		if (balance < -1 && parent->n > parent->right->n)
-			parent = (avl_t *) binary_tree_rotate_left((binary_tree_t *) parent);
-		/* Left right */
-		if (balance > 1 && parent->n > parent->left->n)
+		/* Left */
+		if (balance > 1)
 		{
-			parent->left = (avl_t *) binary_tree_rotate_left(
-				(binary_tree_t *) parent->left);
-			parent = (avl_t *) binary_tree_rotate_right((binary_tree_t *) parent);
+			/* Right */
+			if (balance_prev < 0)
+				binary_tree_rotate_left((binary_tree_t *) parent->left);
+			/* Left */
+			parent = binary_tree_rotate_right((binary_tree_t *) parent);
 		}
-		/* Right left */
-		if (balance < -1 && parent->n < parent->right->n)
+		/* Right */
+		if (balance < -1)
 		{
-			parent->right = (avl_t *) binary_tree_rotate_right(
-				(binary_tree_t *) parent->right);
+			/* Left */
+			if (balance_prev > 0)
+				binary_tree_rotate_right((binary_tree_t *) parent->right);
+			/* Right */
 			parent = (avl_t *) binary_tree_rotate_left((binary_tree_t *) parent);
 		}
 		/* Update root if affected */
