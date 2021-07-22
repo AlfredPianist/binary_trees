@@ -2,9 +2,12 @@
 
 int btih_helper(const binary_tree_t *tree);
 int check_completeness(const binary_tree_t *tree, size_t index, size_t size);
+
 /**
  * binary_tree_is_heap - checks if a binary tree is a valid Max Binary Heap
+ *
  * @tree: a pointer to the root node of the tree to check
+ *
  * Return: 1 if tree is a valid Max Binary Heap
  *         0 if tree is NULL
  *         0 otherwise
@@ -18,7 +21,9 @@ int binary_tree_is_heap(const binary_tree_t *tree)
 
 /**
  * btih_helper - checks if a binary tree is a valid max binary heap
+ *
  * @tree: a pointer to the root node of the tree to check
+ *
  * Return: 1 if tree is a valid max binary heap or
  *         1 if tree is NULL
  *         0 otherwise

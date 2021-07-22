@@ -1,8 +1,10 @@
 #include "binary_trees.h"
 
 int power(int num, int power);
+
 /**
- * heap_insert - inserts a value in Max Binary Heap
+ * heap_insert - inserts a value in Max Binary Heap.
+ *
  * @root: a double pointer to the root node of the Heap to insert the value
  * @value: the value to store in the node to be inserted
  *
@@ -20,16 +22,12 @@ heap_t *heap_insert(heap_t **root, int value)
 		return (*root = binary_tree_node(NULL, value));
 	tree = *root;
 	leaves = binary_tree_size(tree);
-		
+
 	for (level = 0, sublevel = 1; leaves >= sublevel; level++, sublevel *= 2)
-	{
 		leaves = leaves - sublevel;
-	}
-	
+
 	for (bit = power(2, (level - 1)); bit != 1; bit = bit / 2)
-	{
 		tree = leaves & bit ? tree->right : tree->left;
-	}
 
 	new = binary_tree_node(tree, value);
 	leaves & 1 ? (tree->right = new) : (tree->left = new);
@@ -42,7 +40,7 @@ heap_t *heap_insert(heap_t **root, int value)
 		flip->parent->n = tmp;
 		new = new->parent;
 	}
-	
+
 	return (new);
 }
 
@@ -64,17 +62,17 @@ size_t binary_tree_size(const binary_tree_t *tree)
 
 /**
  * power - function pow
+ *
  * @num: num base
  * @power: to power
+ *
  * Return: the pow of the num
  */
 int power(int num, int power)
 {
-	int p = 1;
+	int p, i;
 
-	for(int i = 1; i <= power; i++)
-	{
+	for (i = p = 1; i <= power; i++)
 		p *= num;
-	}
-	return(p);
+	return (p);
 }
