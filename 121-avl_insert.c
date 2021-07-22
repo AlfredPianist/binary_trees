@@ -63,7 +63,7 @@ avl_t *avl_insert(bst_t **tree, int value)
  */
 avl_t *avl_rebalance(avl_t *node, avl_t **tree)
 {
-		int balance, balance_prev;
+	int balance, balance_prev;
 	avl_t *parent = node->parent;
 
 	balance = balance_prev = 0;
@@ -79,7 +79,7 @@ avl_t *avl_rebalance(avl_t *node, avl_t **tree)
 			if (balance_prev < 0)
 				binary_tree_rotate_left((binary_tree_t *) parent->left);
 			/* Left */
-			parent = binary_tree_rotate_right((binary_tree_t *) parent);
+			parent = (avl_t *) binary_tree_rotate_right((binary_tree_t *) parent);
 		}
 		/* Right */
 		if (balance < -1)
