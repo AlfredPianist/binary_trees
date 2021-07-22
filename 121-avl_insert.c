@@ -1,6 +1,6 @@
 #include "binary_trees.h"
 
-avl_t *avl_rebalance(avl_t *node);
+avl_t *avl_rebalance(avl_t *node, avl_t **tree);
 
 /**
  * avl_insert - Inserts a new node in a AVL tree.
@@ -35,7 +35,7 @@ avl_t *avl_insert(bst_t **tree, int value)
 			else
 			{
 				parent->left = (avl_t *)binary_tree_node(parent, value);
-				return (avl_rebalance(parent->left));
+				return (avl_rebalance(parent->left, tree));
 			}
 		}
 		else
@@ -45,7 +45,7 @@ avl_t *avl_insert(bst_t **tree, int value)
 			else
 			{
 				parent->right = (avl_t *)binary_tree_node(parent, value);
-				return (avl_rebalance(parent->right));
+				return (avl_rebalance(parent->right, tree));
 			}
 		}
 	}
@@ -53,15 +53,15 @@ avl_t *avl_insert(bst_t **tree, int value)
 }
 
 /**
- * avl_insert - Inserts a new node in a AVL tree.
+ * avl_rebalance - Rebalancing algorithm for the AVL tree.
  *
- * @tree: The node of the tree be inserted in the AVL tree.
- * @value: The value of the new node.
+ * @node: The node of the tree be traversed upwards the AVL tree checking
+ *        each subtree's balance.
+ * @tree: The root of the AVL tree.
  *
- * Return: pointer to new node in AVL tree, NULL otherwise or if value
- *         already exists.
+ * Return: pointer to new node in AVL tree.
  */
-avl_t *avl_rebalance(avl_t *node)
+avl_t *avl_rebalance(avl_t *node, avl_t **tree)
 {
 	int balance;
 	avl_t *parent = node->parent;
@@ -90,6 +90,9 @@ avl_t *avl_rebalance(avl_t *node)
 				(binary_tree_t *) parent->right);
 			parent = (avl_t *) binary_tree_rotate_left((binary_tree_t *) parent);
 		}
+		/* Update root if affected */
+		if (!parent->parent)
+			*tree = parent;
 		parent = parent->parent;
 	}
 	return (node);
