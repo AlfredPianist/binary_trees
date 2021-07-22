@@ -38,9 +38,13 @@ avl_t *rec_sorted_array_to_avl(avl_t *node, int *array, int min, int max)
 		return (NULL);
 
 	new = (avl_t *) binary_tree_node((bst_t *) node, array[(min + max) / 2]);
+	if (!new)
+		return (NULL);
+
 	new->left = rec_sorted_array_to_avl(new, array,
 					    min, ((min + max) / 2) - 1);
 	new->right = rec_sorted_array_to_avl(new, array,
 					     ((min + max) / 2) + 1, max);
+
 	return (new);
 }
