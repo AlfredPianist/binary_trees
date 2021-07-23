@@ -1,6 +1,6 @@
 #include "binary_trees.h"
 
-size_t binary_tree_size(const binary_tree_t *tree);
+size_t heap_tree_size(const binary_tree_t *tree);
 
 /**
  * heap_to_sorted_array - converts a Binary Max Heap
@@ -18,7 +18,7 @@ int *heap_to_sorted_array(heap_t *heap, size_t *size)
 	if (!heap || !size)
 		return (NULL);
 
-	*size = binary_tree_size(heap) + 1;
+	*size = heap_tree_size(heap);
 	array = malloc(sizeof(int) * (*size));
 	if (!array)
 		return (NULL);
@@ -30,19 +30,19 @@ int *heap_to_sorted_array(heap_t *heap, size_t *size)
 }
 
 /**
- * binary_tree_size - measures the size of a binary tree
+ * heap_tree_size - measures the size of a binary tree
  *
  * @tree: is a pointer to the root node of the tree to measure the size
  *
  * Return: size
  */
-size_t binary_tree_size(const binary_tree_t *tree)
+size_t heap_tree_size(const binary_tree_t *tree)
 {
 	size_t countnode = 0;
 
 	if (!tree)
 		return (0);
-	countnode = 1 + binary_tree_size(tree->right) + binary_tree_size(tree->left);
+	countnode = 1 + heap_tree_size(tree->right) + heap_tree_size(tree->left);
 
 	return (countnode);
 }
