@@ -1,5 +1,6 @@
 #include "binary_trees.h"
 
+size_t binary_tree_size(const binary_tree_t *tree);
 int power(int num, int power);
 
 /**
@@ -46,7 +47,9 @@ heap_t *heap_insert(heap_t **root, int value)
 
 /**
  * binary_tree_size - measures the size of a binary tree
+ *
  * @tree: is a pointer to the root node of the tree to measure the size
+ *
  * Return: size
  */
 size_t binary_tree_size(const binary_tree_t *tree)
